@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
   const [getdata, setgetdata] = useState([]);
@@ -10,6 +10,9 @@ const App = () => {
     console.log(getdata);
   };
 
+  useEffect(() => {
+    fetchData()
+  }, []);
   const trimToWords = (str, wordLimit) => {
     let words = str.split(/\s+/)
     let trimmedStr = words.slice(0, wordLimit).join(" ");
@@ -55,13 +58,6 @@ const App = () => {
           <a href="#">Shop</a>
           <a href="#">Category</a>
           <a href="#">Contact Us</a>
-          <button
-            onClick={fetchData}
-            className="py-2 px-4 bg-white text-black rounded-lg font-medium text-base"
-            id="getdata"
-          >
-            Get Data
-          </button>
           <button
             onClick={openCart}
             id="cartbtn"
